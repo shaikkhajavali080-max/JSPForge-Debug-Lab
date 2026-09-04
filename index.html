@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JSPForge Debug Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <section id="login" class="screen login-screen">
+    <div class="login-card">
+      <div class="brand-mark big">JF</div>
+      <span class="eyebrow">JSP LEARNING PLATFORM</span>
+      <h1>JSPForge<br><em>Debug Studio</em></h1>
+      <p>Master JSP translation, servlet lifecycle and scope debugging through realistic coding challenges.</p>
+      <label>Student name</label>
+      <input id="studentName" placeholder="Enter your name" autocomplete="off">
+      <button id="loginBtn" class="primary">Enter Debug Studio →</button>
+      <small>No server required • Runs entirely in your browser</small>
+    </div>
+  </section>
+
+  <div id="workspace" class="hidden">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">JF</div><div><b>JSPForge</b><small>Debug Studio</small></div></div>
+      <div class="student-chip"><div id="avatar">ST</div><div><b id="sideName">Student</b><small>JSP Debugger</small></div></div>
+      <p class="nav-label">WORKSPACE</p>
+      <button class="nav active" data-view="lab">⌘ <span>Debug Lab</span></button>
+      <button class="nav" data-view="guide">◈ <span>Lifecycle Guide</span></button>
+      <button class="nav" data-view="results">✓ <span>Results</span></button>
+      <div class="sidebar-progress"><span>LAB PROGRESS</span><b id="sideProgress">0%</b><div class="bar"><i id="sideBar"></i></div></div>
+      <button id="logoutBtn" class="logout-btn">⇥ Logout</button>
+      <div class="side-bottom">● Simulation operational</div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div><span class="eyebrow">DEVELOPER WORKSPACE</span><h2 id="pageTitle">JSP Debug Lab</h2></div>
+        <div class="top-actions"><span class="pill">● Browser Simulation</span><div class="avatar" id="topAvatar">ST</div></div>
+      </header>
+
+      <div class="content">
+        <section id="labView" class="view">
+          <section class="hero">
+            <div><span class="tag">INTERACTIVE JSP DEBUGGING</span><h1>Debug like a developer.</h1><p>Find the bug, understand the servlet lifecycle, fix it, and submit your reasoning.</p></div>
+            <div class="hero-stat"><b id="heroSolved">0 / 3</b><span>Core modules solved</span><div class="bar"><i id="heroBar"></i></div></div>
+          </section>
+
+          <div class="lab-grid">
+            <section class="panel challenges">
+              <div class="panel-head"><div><h3>Challenge library</h3><p>Three core JSP scenarios</p></div><span class="count">3</span></div>
+              <div id="challengeList"></div>
+            </section>
+
+            <section class="panel editor-panel">
+              <div class="file-head"><div><span class="dot"></span><b id="fileName">profile.jsp</b><small id="fileStatus">Broken starter file</small></div><span id="bugBadge" class="bug-badge">BUGGY</span></div>
+              <div id="editor" class="editor"></div>
+              <div class="actions"><button id="runBtn" class="primary">▶ Run Debug Check</button><button id="fixBtn" class="secondary">⚙ Apply Correct Fix</button><button id="hintBtn" class="secondary">✦ Hint</button><button id="resetBtn" class="secondary">↺ Reset</button><button id="downloadBtn" class="secondary">⇩ Download JSP</button><span class="shortcut">Ctrl + Enter</span></div>
+              <div class="console"><div class="console-head"><b>Debug console</b><span id="consoleState">READY</span></div><div id="consoleBody">Run the debugger to inspect this broken JSP.</div></div>
+            </section>
+
+            <aside class="panel inspector">
+              <div class="inspect-head"><b>INSPECTOR</b><span id="inspectState">READY</span></div>
+              <div class="inspect-body">
+                <div class="alert-icon">!</div>
+                <h3 id="issueTitle">No issue inspected</h3>
+                <p id="issueDesc">Run the debug check to identify the simulated JSP problem.</p>
+                <hr>
+                <label>WHY IT HAPPENS</label>
+                <div class="info-box" id="whyBox">The JSP is translated into a servlet. Where code is translated and where state is stored affects application behavior.</div>
+                <label>CORRECTED PATTERN</label>
+                <pre id="fixedCode">Run the debugger to view the corrected JSP pattern.</pre>
+              </div>
+            </aside>
+          </div>
+
+          <section class="report panel">
+            <div class="report-head"><div><span class="tag dark">STUDENT SUBMISSION</span><h3>Debug report</h3><p>Document the root cause using JSP translation and servlet life-cycle terms.</p></div><span id="reportStatus" class="report-status">Not submitted</span></div>
+            <textarea id="reportText" placeholder="Example: The declaration is translated into a servlet member, so mutable request-specific state can be shared between requests..."></textarea>
+            <div class="report-actions"><small id="reportHint">Solve the bug and write at least 30 characters.</small><button id="submitBtn" class="primary" disabled>Submit explanation</button></div>
+          </section>
+        </section>
+
+        <section id="guideView" class="view hidden">
+          <div class="page-card"><span class="tag dark">LIFECYCLE GUIDE</span><h1>How JSP becomes a servlet</h1><p class="lead">Use this model when explaining your debugging decisions during a presentation.</p>
+          <div class="timeline">
+            <div><b>01</b><h3>JSP translation</h3><p>The JSP container translates JSP into a servlet source/class.</p></div>
+            <div><b>02</b><h3>Servlet lifecycle</h3><p>The servlet is initialized and its service method handles requests.</p></div>
+            <div><b>03</b><h3>Request processing</h3><p>Request-specific variables belong to the current request, not shared servlet fields.</p></div>
+            <div><b>04</b><h3>Scope & navigation</h3><p>Request/session scope and forward/redirect determine how information and navigation behave.</p></div>
+          </div>
+          </div>
+        </section>
+
+        <section id="resultsView" class="view hidden">
+          <div class="page-card result-page"><span class="tag dark">LAB RESULTS</span><h1 id="resultTitle">Your progress</h1><div class="big-score" id="bigScore">0%</div><p id="resultText">Solve all three modules to complete the lab.</p><div id="resultList"></div><button id="backLab" class="primary">← Back to Debug Lab</button> <button id="newSessionBtn" class="secondary">↻ Start New Session</button></div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

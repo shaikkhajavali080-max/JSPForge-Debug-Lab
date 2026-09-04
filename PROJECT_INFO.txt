@@ -1,0 +1,19 @@
+JSPForge Debug Lab
+==================
+An Interactive Browser-Based JSP Debugging and Servlet Lifecycle Simulation
+
+Technology:
+- HTML
+- CSS
+- JavaScript
+
+No requirements:
+- No Tomcat
+- No JSP installation
+- No MySQL
+- No npm
+- No Node.js
+- No backend server
+
+Run:
+Open index.html in a modern web browser.
